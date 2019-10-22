@@ -15,7 +15,7 @@ case $input in
     [yY]*)
         echo "pleaase input the version of php that you want to install"
         read -p "simple: install php5.5 that input 55:" version
-        yum install epel-release
+        yum -y install epel-release
         rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
         yum -y install php${version}w php${version}w-cli php${version}w-common php${version}w-gd php${version}w-ldap php${version}w-mbstring php${version}w-mcrypt php${version}w-mysqlnd php${version}w-pdo
         ;;
@@ -26,6 +26,8 @@ read -p "install mysql?[y/n]" input
 
 case $input in
     [yY]*)
+        # read -p "please enter your password for MySQL" password
+
         rm -rf /var/lib/mysql
         cd /opt
         wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
