@@ -1,11 +1,11 @@
 # install httpd
 read -p "install apache?[y/n]" input
-    case $input in
-        [yY]*)
+case $input in
+    [yY]*)
         yum install httpd -y
         systemctl enable httpd
         systemctl start httpd
-        ;;
+    ;;
 esac
 
 # install php
@@ -18,7 +18,7 @@ case $input in
         yum -y install epel-release
         rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
         yum -y install php${version}w php${version}w-cli php${version}w-common php${version}w-gd php${version}w-ldap php${version}w-mbstring php${version}w-mcrypt php${version}w-mysqlnd php${version}w-pdo
-        ;;
+    ;;
 esac
 
 # install mysql80
@@ -38,8 +38,8 @@ case $input in
         systemctl enable mysqld
         # systemctl stop mysqld
         grep "root@localhost:.*" /var/log/mysqld.log -o
-        ;;
+    ;;
     [nN]*)
         echo "will not install mysql."
-        ;;
+    ;;
 esac
